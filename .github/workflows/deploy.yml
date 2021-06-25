@@ -3,6 +3,8 @@ name: Build & Deploy
 on:
   push:
     branches: [master]
+    paths-ignore:
+      - 'test.txt'
 
 jobs:
   deploy:
@@ -16,5 +18,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
           script: |
+            mkdir /home/ubuntu/rajeshFolder2
+            cd /home/ubuntu/rajeshFolder2
             git clone https://github.com/Rajesh8688/samplerepo.git
             echo 'Deployment successful to digital ocean' 

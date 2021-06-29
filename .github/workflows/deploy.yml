@@ -10,6 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.2
         with:
@@ -17,8 +18,16 @@ jobs:
           key: ${{secrets.SSH_KEY}} # Private or public key of the server
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
-          script: |
-            mkdir /home/ubuntu/mainbranch
-            cd /home/ubuntu/mainbranch
-            git clone  https://github.com/Rajesh8688/samplerepo.git
-            echo 'Deployment successful to digital ocean' 
+          # script: |
+          #   mkdir /home/ubuntu/mainbranch
+          #   cd /home/ubuntu/mainbranch
+          #   git clone  https://github.com/Rajesh8688/samplerepo.git
+          #   echo 'Deployment successful to digital ocean' 
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."

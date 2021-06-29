@@ -21,7 +21,7 @@ jobs:
           # script: |
           #   mkdir /home/ubuntu/mainbranch
           #   cd /home/ubuntu/mainbranch
-          #   git clone  https://github.com/Rajesh8688/samplerepo.git
+          #   git clone  https://github.com/Rajesh8688/samplerepo.git 
           #   echo 'Deployment successful to digital ocean' 
       - name: Check out repository code
         uses: actions/checkout@v2
